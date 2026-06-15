@@ -1,26 +1,46 @@
-# Cinefiles Backend API
+# 🎬 CineFiles Backend API
 
-A robust, enterprise-ready Spring Boot REST API designed to manage movie metadata, user posts, and social interactions. This project bridges local data persistence with third-party data procurement to create a seamless, high-performance backend system.
+🚀 **Live Cloud Server:** [http://cinefiles-api.ap-south-1.elasticbeanstalk.com](http://cinefiles-api.ap-south-1.elasticbeanstalk.com)
 
-## 🚀 Key Architecture & Features
+A robust, enterprise-ready Spring Boot REST API designed to manage movie metadata, user profiles, and social interactions. This project bridges cloud database persistence with third-party data procurement to create a seamless, high-performance backend system.
 
+---
+
+## 🏗️ Architecture & Key Features
+
+* **Cloud-Native Deployment:** Fully hosted on **AWS Elastic Beanstalk** with a normalized **AWS RDS MySQL** database, configured with strict VPC inbound security groups.
+* **Automated Data Procurement (Read-Through Cache):** Integrated with the external **OMDb API**. The system intelligently intercepts search queries, checks the local AWS vault, and automatically fetches and caches missing metadata to drastically reduce external network calls and latency.
+* **Database Connection Pooling:** Implemented **HikariCP** to efficiently manage concurrent cloud database connections, preventing timeouts under heavy load.
 * **Spring Boot REST API:** Decoupled architecture serving dynamic, structured JSON payloads to frontend clients.
-* **Database Connection Pooling:** Implemented **HikariCP** to efficiently manage concurrent MySQL connections, preventing timeouts under high traffic.
-* **Automated Data Procurement:** Integrated with the external **OMDb API**. The system intelligently intercepts search queries, fetches external movie metadata, and automatically caches it into the local relational database to drastically reduce future network latency.
-* **Security First:** All sensitive database credentials and API keys are abstracted via environment variables.
+* **Security First:** All sensitive database credentials, URIs, and API keys are abstracted and strictly excluded from version control using `.gitignore`.
 
-## 🛠️ Tech Stack
-* **Language:** Java (Core)
-* **Framework:** Spring Boot
+---
+
+## 💻 Tech Stack
+
+* **Language:** Java 21
+* **Framework:** Spring Boot, Spring Web, Spring Data JPA
+* **Cloud Infrastructure:** AWS Elastic Beanstalk, AWS EC2, AWS RDS
 * **Database:** MySQL
-* **Tools/Libraries:** HikariCP, Maven, JDBC
+* **Tools/Libraries:** Maven, HikariCP, JDBC
 
-## ⚙️ How to Run Locally
-1. Clone the repository: `git clone https://github.com/ankitdash-1407/CineFiles-Spring-Boot-API.git`
-2. Ensure you have a local MySQL server running.
-3. Set the following Environment Variables in your IDE or system:
-   * `DB_URL`
-   * `DB_USER`
-   * `DB_PASSWORD`
-   * `OMDB_API_KEY`
-4. Run `BackendApplication.java` to start the Tomcat server on `localhost:8080`.
+---
+
+## 🌐 API Reference
+
+| Method | Endpoint | Description | Example |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/api/movies/search` | Fetches movie from OMDb and caches to AWS RDS | `?title=Inception` |
+| `GET` | `/api/movies/recommendations` | Returns movie recommendations based on title | `?title=The Matrix` |
+| `POST` | `/api/movies/watchlist/add` | Adds a specific movie to a user's watchlist | `?username=ankit&title=Inception` |
+
+---
+
+## 🛠️ Local Development Setup
+
+For security purposes, database credentials and API keys are not tracked in this repository. To run this project locally, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/ankitdash-1407/CineFiles-Spring-Boot-API.git](https://github.com/ankitdash-1407/CineFiles-Spring-Boot-API.git)
+   
