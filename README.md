@@ -48,3 +48,6 @@ DB_URL=jdbc:mysql://localhost:3306/cinefiles
 DB_USER=your_local_username
 DB_PASSWORD=your_local_password
 OMDB_API_KEY=your_omdb_api_key
+```
+
+4. Run the Spring Boot application.
