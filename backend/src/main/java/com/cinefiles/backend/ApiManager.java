@@ -12,6 +12,18 @@ public class ApiManager {
 
     // 1. The Promise: Change 'void' to 'Movie'
     public static Movie fetchAndCacheMovie(String title) {
+
+        // --- THE CACHE CHECK (The Gatekeeper) ---
+        // First, check if AWS already has this movie to prevent duplicates!
+        int existingId = MovieManager.getMovieId(title);
+
+        if (existingId != -1) {
+            System.out.println("[⚡ CACHE HIT] '" + title + "' found in AWS Vault! Skipping internet call.");
+            // Fetch the full movie details directly from your database
+            return MovieManager.searchLocalDatabase(title);
+        }
+
+        // --- THE CACHE MISS (The original code) ---
         System.out.println("[🌐 CACHE MISS] Movie not found locally. Connecting to OMDb API...");
 
         String formattedTitle = title.replace(" ", "+");
@@ -40,7 +52,7 @@ public class ApiManager {
             int fetchedId = MovieManager.getMovieId(fetchedTitle);
 
             // 4. THE BUCKET: Pack the groceries into the Movie object
-            Movie internetMovieBucket = new Movie(fetchedId,fetchedTitle, fetchedGenre, rating);
+            Movie internetMovieBucket = new Movie(fetchedId, fetchedTitle, fetchedGenre, rating);
 
             // 5. THE DELIVERY: Hand the bucket back to the Main Engine
             return internetMovieBucket;

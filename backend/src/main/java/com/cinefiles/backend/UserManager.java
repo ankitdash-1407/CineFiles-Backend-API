@@ -32,7 +32,7 @@ public class UserManager {
         String securedHash = hashPassword(plainTextPassword);
 
         // 2. The Blueprint now includes the password_hash column
-        String sql = "INSERT INTO Users (username, email, password_hash) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)";
 
         try (Connection conn = DatabaseEngine.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -54,7 +54,7 @@ public class UserManager {
     public static User verifyLogin(String inputUsername, String inputPassword) {
 
         // 2. The Updated Blueprint: Ask for ALL the groceries we need for the bucket!
-        String sql = "SELECT user_id, username, email, password_hash FROM Users WHERE username = ?";
+        String sql = "SELECT user_id, username, email, password_hash FROM users WHERE username = ?";
 
         try (Connection conn = DatabaseEngine.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -91,7 +91,7 @@ public class UserManager {
 
     // --- THE TRANSLATOR: Get User ID ---
     public static int getUserId(String username) {
-        String sql = "SELECT user_id FROM Users WHERE username = ?";
+        String sql = "SELECT user_id FROM users WHERE username = ?";
 
         try (Connection conn = DatabaseEngine.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

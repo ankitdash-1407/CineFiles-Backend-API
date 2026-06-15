@@ -13,7 +13,7 @@ public class MovieManager {
 
         // 1. THE BLUEPRINT
         // Hint: The table is named 'Movies'. The columns are title, attribute, and rating.
-        String sql = "INSERT INTO Movies (title, attribute, rating) VALUES (?,?,?)";
+        String sql = "INSERT INTO movies (title, attribute, rating) VALUES (?,?,?)";
 
         try (Connection conn = DatabaseEngine.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -36,7 +36,7 @@ public class MovieManager {
 
     // --- THE TRANSLATOR: Get Movie ID ---
     public static int getMovieId(String title) {
-        String sql = "SELECT movie_id FROM Movies WHERE title = ?";
+        String sql = "SELECT movie_id FROM movies WHERE title = ?";
 
         try (Connection conn = DatabaseEngine.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -55,7 +55,7 @@ public class MovieManager {
 
     // --- THE CACHE CHECK: Look in local database first ---
     public static Movie searchLocalDatabase(String title) {
-        String sql = "SELECT * FROM Movies WHERE title = ?";
+        String sql = "SELECT * FROM movies WHERE title = ?";
 
         try (Connection conn = DatabaseEngine.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {

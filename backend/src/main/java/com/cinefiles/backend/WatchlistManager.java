@@ -21,7 +21,7 @@ public class WatchlistManager {
         }
 
         // 3. The Blueprint: Insert into the Bridge Table
-        String sql = "INSERT INTO Watchlists (user_id, movie_id) VALUES (?, ?)";
+        String sql = "INSERT INTO watchlists (user_id, movie_id) VALUES (?, ?)";
 
         try (Connection conn = DatabaseEngine.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -50,8 +50,8 @@ public class WatchlistManager {
 
         // 3. The Blueprint: Notice we JOIN by user_id now, which is faster!
         String sql = "SELECT m.movie_id, m.title, m.attribute, m.rating " +
-                "FROM Movies m " +
-                "JOIN Watchlists w ON m.movie_id = w.movie_id " +
+                "FROM movies m " +
+                "JOIN watchlists w ON m.movie_id = w.movie_id " +
                 "WHERE w.user_id = ?";
 
         try (Connection conn = DatabaseEngine.connect();
