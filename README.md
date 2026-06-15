@@ -2,16 +2,15 @@
 
 🚀 **Live Cloud Server:** [http://cinefiles-api.ap-south-1.elasticbeanstalk.com](http://cinefiles-api.ap-south-1.elasticbeanstalk.com)
 
-A robust, enterprise-ready Spring Boot REST API designed to manage movie metadata, user watchlists, and lookups. This project bridges cloud database persistence with third-party data procurement to create a seamless, high-performance backend system.
+A robust, enterprise-ready Spring Boot REST API designed to manage movie metadata and user watchlists. This project bridges cloud database persistence with third-party data procurement to create a seamless, high-performance backend system.
 
 ---
 
 ## 🏗️ Architecture & Key Features
 
-* **Cloud-Native Deployment:** Fully hosted on **AWS Elastic Beanstalk** with a normalized **AWS RDS MySQL** database, configured with strict VPC inbound security groups.
-* **Automated Data Procurement (Read-Through Cache):** Integrated with the external **OMDb API**. The system intelligently intercepts search queries, checks the local AWS RDS vault, and automatically fetches and caches missing metadata to drastically reduce external network calls and latency.
-* **Database Connection Pooling:** Implemented **HikariCP** to efficiently manage concurrent cloud database connections, preventing timeouts under heavy load.
-* **Spring Boot REST API:** Decoupled architecture serving dynamic, structured JSON payloads to clients.
+* **Cloud-Native Deployment:** Fully hosted on AWS Elastic Beanstalk with an AWS RDS MySQL database, configured with strict VPC inbound security groups.
+* **Automated Data Procurement (Read-Through Cache):** Integrated with the external OMDb API. The system intelligently intercepts search queries, checks the local AWS RDS vault, and automatically fetches and caches missing metadata to reduce external network calls and latency.
+* **Database Connection Pooling:** Implemented HikariCP to efficiently manage concurrent cloud database connections, preventing timeouts under heavy load.
 * **Security First:** All sensitive database credentials, URIs, and API keys are abstracted and strictly excluded from version control using `.gitignore`.
 
 ---
@@ -20,9 +19,8 @@ A robust, enterprise-ready Spring Boot REST API designed to manage movie metadat
 
 * **Language:** Java 21
 * **Framework:** Spring Boot, Spring Web, Spring Data JPA
-* **Cloud Infrastructure:** AWS Elastic Beanstalk, AWS EC2, AWS RDS
+* **Cloud Infrastructure:** AWS Elastic Beanstalk, AWS RDS
 * **Database:** MySQL
-* **Tools/Libraries:** Maven, HikariCP, JDBC
 
 ---
 
@@ -36,10 +34,17 @@ A robust, enterprise-ready Spring Boot REST API designed to manage movie metadat
 
 ---
 
-## 🛠️ Local Development Setup
+## 🛠️ Local Setup
 
-For security purposes, database credentials and API keys are not tracked in this repository. To run this project locally:
+For security purposes, database credentials and API keys are not tracked in this repository. To run this locally:
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/ankitdash-1407/CineFiles-Spring-Boot-API.git](https://github.com/ankitdash-1407/CineFiles-Spring-Boot-API.git)
+1. Clone this repository and open it in your IDE.
+2. Create a new file named `application.properties` inside the `src/main/resources/` directory.
+3. Add your local configuration:
+
+```properties
+SERVER_PORT=8080
+DB_URL=jdbc:mysql://localhost:3306/cinefiles
+DB_USER=your_local_username
+DB_PASSWORD=your_local_password
+OMDB_API_KEY=your_omdb_api_key
