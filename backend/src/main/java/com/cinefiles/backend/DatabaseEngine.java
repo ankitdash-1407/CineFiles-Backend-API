@@ -1,18 +1,14 @@
 package com.cinefiles.backend;
-//Every time you call DatabaseEngine.connect(), your server does this:
-//
-//Opens a network socket.
-//
-//Sends the username (root) to MySQL.
-//
-//MySQL checks the password and authenticates.
-//
-//MySQL allocates memory for the user.
-//
-//Java finally gets the Connection object.
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
+import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
+import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueResponse;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -21,15 +17,51 @@ public class DatabaseEngine {
     // The Fleet Manager
     private static HikariDataSource dataSource;
 
-    // The static block runs exactly ONCE when the app starts up
     static {
+        // We still get the URL from the environment because URLs aren't secrets!
         String url = System.getenv("DB_URL");
-        String user = System.getenv("DB_USER");
-        String password = System.getenv("DB_PASSWORD");
+        String user = null;
+        String password = null;
+
+        System.out.println("[SYSTEM] Attempting to fetch credentials from AWS Secrets Manager...");
+
+        try {
+            // 1. Create a secure connection to the AWS Vault in Mumbai
+            Region region = Region.AP_SOUTH_1;
+            SecretsManagerClient client = SecretsManagerClient.builder()
+                    .region(region)
+                    .build();
+
+            // 2. Ask for the specific secret
+            GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
+                    .secretId("prod/cinefiles/db")
+                    .build();
+
+            GetSecretValueResponse getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
+            String secretJsonString = getSecretValueResponse.secretString();
+
+            // 3. AWS returns a JSON string. We parse it to grab just the username and password
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode secretNode = mapper.readTree(secretJsonString);
+
+            user = secretNode.get("username").asText();
+            password = secretNode.get("password").asText();
+
+            System.out.println("[SUCCESS] Zero-Trust Vault Accessed. Database credentials loaded into volatile memory.");
+
+            // 4. Close the vault connection
+            client.close();
+
+        } catch (Exception e) {
+            // If we are testing on a local laptop without AWS keys, fallback to the old way so the app doesn't die.
+            System.out.println("[WARNING] AWS Vault access failed (Expected for local testing). Falling back to local Environment Variables.");
+            user = System.getenv("DB_USER");
+            password = System.getenv("DB_PASSWORD");
+        }
 
         if (url == null || user == null || password == null) {
-            System.err.println("[CRITICAL] Database Bridge Setup Failed! Environment variables missing.");
-            System.exit(1); // Kill the app if secrets are missing
+            System.err.println("[FATAL] Database Bridge Setup Failed! No credentials found in AWS or locally.");
+            System.exit(1);
         }
 
         // Configure the Taxi Lot
@@ -38,19 +70,15 @@ public class DatabaseEngine {
         config.setUsername(user);
         config.setPassword(password);
 
-        // --- SYSTEM-LEVEL TUNING ---
-        config.setMaximumPoolSize(10); // Max 10 connections at peak traffic
-        config.setMinimumIdle(2);      // Keep 2 connections warmed up at all times
-        config.setConnectionTimeout(30000); // Wait 30 seconds before giving up on a connection
+        config.setMaximumPoolSize(10);
+        config.setMinimumIdle(2);
+        config.setConnectionTimeout(30000);
 
-        // Build the lot!
         dataSource = new HikariDataSource(config);
         System.out.println("[SYSTEM] HikariCP Connection Pool Initialized Successfully.");
     }
 
-    // The Bridge Method (Your managers still call this exact same method!)
     public static Connection connect() throws SQLException {
-        // Instead of building a new connection, grab one from the pool
         return dataSource.getConnection();
     }
 }
