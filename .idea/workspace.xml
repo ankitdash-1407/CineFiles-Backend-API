@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f15f4001-5e08-4d34-a241-6d2eba18fa61" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/frontend/src/pages/LoginPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/backend.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/db-forest-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/BackendApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/controller/FeedController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/controller/InvestmentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/controller/MovieController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/entity/Campaign.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/entity/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/entity/InvestmentLedger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/entity/Movie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/entity/Post.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/entity/PostLike.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/repository/CampaignRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/repository/CommentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/repository/InvestmentLedgerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/repository/MovieRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/repository/PostLikeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/repository/PostRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/service/InvestmentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/service/MovieService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/service/PostService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/main/java/com/cinefiles/backend/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/backend/src/test/java/com/cinefiles/backend/BackendApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/backend" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ankitdash-1407"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ankitdash-1407/CineFiles-Spring-Boot-API.git",
+    "accountId": "3ed1ac99-dec3-4909-8481-7a8f1a7b76ba"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="3FcRkyBPuJen4nmRYD0i5PsoVN0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.24374.151" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.24374.151" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f15f4001-5e08-4d34-a241-6d2eba18fa61" name="Changes" comment="" />
+      <created>1782372519000</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1782372519000</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
