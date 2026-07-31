@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Your Spring Boot server runs on 8080
-const API_BASE_URL = 'http://localhost:8080';
+// my Spring Boot server runs on now aws
+const API_BASE_URL = 'http://cinefiles-api.ap-south-1.elasticbeanstalk.com';
 
 const api = axios.create({
     baseURL: API_BASE_URL,
