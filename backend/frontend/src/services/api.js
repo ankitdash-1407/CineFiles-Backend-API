@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// my Spring Boot server runs on now aws
-const API_BASE_URL = 'http://cinefiles-api.ap-south-1.elasticbeanstalk.com';
+// FIX: Set to empty string so Vercel can proxy it
+const API_BASE_URL = '';
 
 const api = axios.create({
     baseURL: API_BASE_URL,
@@ -12,7 +12,6 @@ const api = axios.create({
 
 export const loginUser = async (credentials) => {
     try {
-        // FIX: Pointing to AuthController's correct route
         const response = await api.post('/api/auth/login', credentials);
         return response.data;
     } catch (error) {
@@ -23,7 +22,6 @@ export const loginUser = async (credentials) => {
 
 export const registerUser = async (userData) => {
     try {
-        // FIX: Pointing to AuthController's correct route
         const response = await api.post('/api/auth/register', userData);
         return response.data;
     } catch (error) {

@@ -23,7 +23,7 @@ const CampaignsPage = () => {
     const fetchBonds = async () => {
         if (!token) return;
         try {
-            const response = await fetch("http://cinefiles-api.ap-south-1.elasticbeanstalk.com/api/posts/feed", {
+            const response = await fetch("/api/posts/feed", {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
 
@@ -40,7 +40,7 @@ const CampaignsPage = () => {
     const fetchPortfolio = async () => {
         if (!token || !user) return;
         try {
-            const response = await fetch(`http://cinefiles-api.ap-south-1.elasticbeanstalk.com/api/investments/portfolio/${user.userId}`, {
+            const response = await fetch(`/api/investments/portfolio/${user.userId}`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
 
@@ -90,7 +90,7 @@ const CampaignsPage = () => {
                         amount: amount
                     };
 
-                    const dbResponse = await fetch("http://cinefiles-api.ap-south-1.elasticbeanstalk.com/api/investments/invest", {
+                    const dbResponse = await fetch("/api/investments/invest", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",

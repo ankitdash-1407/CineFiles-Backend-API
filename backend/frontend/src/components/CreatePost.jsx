@@ -25,8 +25,8 @@ const CreatePost = ({ currentUserId }) => {
 
         const delayDebounceFn = setTimeout(async () => {
             try {
-                // FIX 1: Changed ${query} to ${movieTitle}
-                const response = await fetch(`http://cinefiles-api.ap-south-1.elasticbeanstalk.com/api/movies/autocomplete?query=${movieTitle}`, {
+                // FIX: Removed AWS URL, starts with /api now
+                const response = await fetch(`/api/movies/autocomplete?query=${movieTitle}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -71,8 +71,8 @@ const CreatePost = ({ currentUserId }) => {
         };
 
         try {
-            // FIX 2: Replaced localhost:8080 with the live AWS URL
-            const response = await fetch("http://cinefiles-api.ap-south-1.elasticbeanstalk.com/api/posts/create", {
+            // FIX: Removed AWS URL, starts with /api now
+            const response = await fetch("/api/posts/create", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
