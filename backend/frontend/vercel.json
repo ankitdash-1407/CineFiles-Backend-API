@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "http://cinefiles-api.ap-south-1.elasticbeanstalk.com/api/:path*"
+      "source": "/api/(.*)",
+      "destination": "http://cinefiles-api.ap-south-1.elasticbeanstalk.com/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
