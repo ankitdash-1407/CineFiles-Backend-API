@@ -12,7 +12,8 @@ const api = axios.create({
 
 export const loginUser = async (credentials) => {
     try {
-        const response = await api.post('/api/users/login', credentials);
+        // FIX: Pointing to AuthController's correct route
+        const response = await api.post('/api/auth/login', credentials);
         return response.data;
     } catch (error) {
         console.error("API Error:", error);
@@ -22,7 +23,8 @@ export const loginUser = async (credentials) => {
 
 export const registerUser = async (userData) => {
     try {
-        const response = await api.post('/api/users/register', userData);
+        // FIX: Pointing to AuthController's correct route
+        const response = await api.post('/api/auth/register', userData);
         return response.data;
     } catch (error) {
         console.error("API Error:", error);

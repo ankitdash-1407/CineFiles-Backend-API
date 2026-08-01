@@ -25,9 +25,13 @@ const CreatePost = ({ currentUserId }) => {
 
         const delayDebounceFn = setTimeout(async () => {
             try {
-                // Hits your backend to find matching movies
-                const response = await fetch(`http://localhost:8080/api/movies/autocomplete?query=${movieTitle}`, {
-                    headers: { 'Authorization': `Bearer ${token}` }
+                // FIX 1: Changed ${query} to ${movieTitle}
+                const response = await fetch(`http://cinefiles-api.ap-south-1.elasticbeanstalk.com/api/movies/autocomplete?query=${movieTitle}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
                 });
 
                 if (response.ok) {
@@ -67,7 +71,8 @@ const CreatePost = ({ currentUserId }) => {
         };
 
         try {
-            const response = await fetch("http://localhost:8080/api/posts/create", {
+            // FIX 2: Replaced localhost:8080 with the live AWS URL
+            const response = await fetch("http://cinefiles-api.ap-south-1.elasticbeanstalk.com/api/posts/create", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

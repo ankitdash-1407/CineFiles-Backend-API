@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import { loginUser } from '../services/api';
 
 function LoginPage() {
     const [username, setUsername] = useState('');
@@ -14,20 +15,8 @@ function LoginPage() {
         setMessage('Authenticating...');
 
         try {
-            const response = await fetch('http://localhost:8080/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
-            });
-
-            // FIX: Check if the login actually worked BEFORE trying to parse JSON
-            if (!response.ok) {
-                setMessage('Login failed. Incorrect username or password.');
-                return; // Stop here so it doesn't crash
-            }
-
-            // If we make it here, the login worked, and we safely parse the token
-            const data = await response.json();
+            // FIX: Using your configured Axios instance from api.js
+            const data = await loginUser({ username, password });
 
             login(
                 { userId: data.userId, username: data.username, role: data.role },
@@ -38,9 +27,10 @@ function LoginPage() {
 
         } catch (err) {
             console.error("Login crash:", err);
-            setMessage('Server unreachable. Is the backend running?');
+            setMessage('Login failed. Check credentials or server connection.');
         }
     };
+
     return (
         <div style={{ padding: '50px' }}>
             <h1>Login to CineFiles</h1>
@@ -65,7 +55,7 @@ function LoginPage() {
                 </div>
                 <button type="submit">Sign In</button>
             </form>
-            {message && <p style={{ marginTop: '20px', fontWeight: 'bold' }}>{message}</p>}
+            {message && <p style={{ marginTop: '20px', fontWeight: 'bold', color: 'red' }}>{message}</p>}
             <p style={{ marginTop: '20px' }}>
                 Don't have an account? <a href="/register">Sign up here</a>
             </p>

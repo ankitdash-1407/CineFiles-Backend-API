@@ -21,7 +21,7 @@ const FeedPage = () => {
     const fetchFeed = async () => {
         if (!token) return;
         try {
-            const response = await fetch("http://localhost:8080/api/posts/feed", {
+            const response = await fetch("http://cinefiles-api.ap-south-1.elasticbeanstalk.com/api/posts/feed", {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const FeedPage = () => {
                 amount: amount
             };
 
-            const response = await fetch("http://localhost:8080/api/investments/invest", {
+            const response = await fetch("http://cinefiles-api.ap-south-1.elasticbeanstalk.com/api/investments/invest", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
